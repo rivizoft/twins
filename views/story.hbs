@@ -1,0 +1,24 @@
+<style>
+    .container {
+        width: auto;
+        max-width: 680px;
+        padding: 0 15px;
+    }
+
+</style>
+  
+<div class="d-flex flex-column h-100">
+    <div class="flex-shrink-0">
+        <div class="container">
+            <h1 class="mt-5">{{ story.title }}</h1>
+            <p class="lead">{{ story.content }}</p>
+            <p>Автор: {{ user.login }}</p>
+        </div>
+    </div>
+    <footer class="footer mt-auto py-3 bg-light fixed-bottom">
+        <div class="container">
+            <a href="/" class="text-muted">На главную</a>
+        </div>
+    </footer>
+</div>
+

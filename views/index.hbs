@@ -1,0 +1,67 @@
+<style>
+  .col-centered{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+<script src="scripts/pagination.js"></script>
+
+{{> navbar }}
+
+{{#unless user}}
+  <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="fw-light">
+            ВСЕМ 
+            <img src="images/logo_without_text.png" width="40">
+            TWINS!
+          </h1>
+          <p class="lead text-muted">Самые интересные и короткие истории в интернете - это твинсы! Читай, наслаждайся, пиши!</p>
+          <p><a href="register" class="btn btn-primary my-2">Зарегистрироваться</a></p>
+        </div>
+      </div>
+    </section>
+  {{/unless}}
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        
+        {{#if stories.length}}
+    
+        <div class="mx-auto" id="mainDiv">
+
+            {{!-- {{#each stories}}
+
+                    <div class="col-lg-6 col-centered mb-4">
+                        <div class="card shadow-sm">
+                            <img class="card-img-top" src="{{ image }}">
+                            <div class="card-body">
+                              <p class="card-text">{{ description }}</p>
+                              <div class="d-flex justify-content-between align-items-center">
+                                  <a href="story/{{_id}}" class="btn btn-outline-dark">Читать</a>
+                                  <small class="text-muted">Автор</small>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+
+            {{/each}} --}}
+
+        </div>
+
+{{else}}
+
+<h1>Историй нет :(</h1>
+
+{{/if}}
+      <div class="spinner-grow col-centered" role="status" id="loading">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+    </div>
+</div>
+
+{{>footer}}

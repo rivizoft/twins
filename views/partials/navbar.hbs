@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="images/logo_without_text.png" alt="" width="30" class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                {{#if isIndex}}
+                    <li class="nav-item"><a class="nav-link active" href="/">Главная</a></li>
+                {{else}}
+                    <li><a class="nav-link" href="/">Главная</a></li>
+                {{/if}}
+
+                {{#if isAbout}}
+                    <li class="active"><a href="/about">О сервисе</a></li>
+                {{else}}
+                    <li><a class="nav-link" href="/about">О сервисе</a></li>
+                {{/if}}
+        </ul>
+        <ul class="navbar-nav ml-auto">
+                {{#if user}}
+                    {{#if isWrite}}
+                        <li class="nav-item"><a class="nav-link active" href="/write">Написать твинк</a></li>
+                    {{else}}
+                        <li><a class="nav-link" href="/write">Написать твинк</a></li>
+                    {{/if}}
+                    <li><a class="nav-link" href="/logout">Выйти</a></li>
+                {{else}}
+                    {{#if isLogin}}
+                        <li class="nav-item"><a class="nav-link active" href="/login">Войти в аккаунт</a></li>
+                    {{else}}
+                        <li><a class="nav-link" href="/login">Войти в аккаунт</a></li>
+                    {{/if}}
+                {{/if}}
+        </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+        {{#if errors.length }}
+        {{#each errors}}
+            <div class="card-panel red lighten-1 z-depth-2">
+                <span class="white-text text-darken-2">{{ msg }}</span>
+            </div>
+        {{/each}}
+    {{/if}}
+
+    {{#if successMessage }}
+        <div class="card-panel green lighten-1 z-depth-2">
+                <span class="white-text text-darken-2">{{ successMessage }}</span>
+            </div>
+    {{/if}}
+</div>
