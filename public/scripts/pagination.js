@@ -32,12 +32,12 @@ function getData() {
                     div.innerHTML =
                         "<div class=\"col-lg-6 col-centered mb-4\">" +
                             "<div class=\"card shadow-sm\">" +
-                                "<img class=\"card-img-top\" src=\"" + item.image + "\">" +
+                                "<img class=\"card-img-top\" src=\"" + item.imageUrl + "\">" +
                                 "<div class=\"card-body\">" +
                                     "<p class=\"card-text\">" + item.description + "</p>" +
                                     "<div class=\"d-flex justify-content-between align-items-center\">" +
-                                        "<a href=\"story/" + item._id + "\" class=\"btn btn-outline-dark\">Читать</a>" +
-                                        "<small class=\"text-muted\">Автор</small>" +
+                                        "<a href=\"story/" + item.id + "\" class=\"btn btn-outline-dark\">Читать</a>" +
+                                        "<small class=\"text-muted\">" + item.author + "</small>" +
                                     "</div>" +
                                 "</div>" +
                             "</div>" +

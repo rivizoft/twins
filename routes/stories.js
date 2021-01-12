@@ -30,7 +30,6 @@ router.get('/', async (req, res) => {
     });
 });
 
-//TODO Доделать пагинацию
 router.get('/getStories', async (req, res) => {
     const limit = parseInt(req.query.limit);
     const page = parseInt(req.query.page);
@@ -39,7 +38,20 @@ router.get('/getStories', async (req, res) => {
         .limit(limit)
         .skip((page - 1) * limit);
 
-    res.json(stories);
+    var response = [];
+
+    for (const item of stories) {
+        const authorName = await User.findById(item.owner);
+        var story = {
+            description: item.description,
+            id: item._id,
+            imageUrl: item.image,
+            author: authorName.login
+        };
+        response.push(story);
+    }
+
+    res.json(response);
 });
 
 router.get('/write', ensureAuth, (req, res) => {
