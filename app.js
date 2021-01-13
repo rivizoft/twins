@@ -41,7 +41,7 @@ async function start()
 {
     try
     {
-        await mongoose.connect('mongodb+srv://rivizoft:dV52SmTbo3bMZUpF@cluster0.kkxwh.mongodb.net/stories', 
+        await mongoose.connect('mongodb://rivizoft:Ibazas13@127.0.0.1:27017/twins', 
         {
             useNewUrlParser: true,
             useFindAndModify: false
