@@ -56,7 +56,7 @@ router.get('/getStories', async (req, res) => {
 
 router.get('/write', ensureAuth, (req, res) => {
     res.render('write', {
-        title: "Написать твинк",
+        title: "Написать твинс",
         isWrite: true
     });
 });
@@ -104,6 +104,14 @@ router.get('/story/:id', async (req, res) => {
         story: story,
         user: user
     });
+});
+
+router.get('/about', (req, res) => 
+{
+    res.render('about', {
+        title: "Что такое Twins?",
+
+    })
 });
 
 // Access Control
