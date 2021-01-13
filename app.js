@@ -41,7 +41,7 @@ async function start()
 {
     try
     {
-        await mongoose.connect('mongodb://rivizoft:Ibazas13@127.0.0.1:27017/twins', 
+        await mongoose.connect('mongodb://rivizoft:Ibazas13@127.0.0.1:27017/twins?authSource=admin', 
         {
             useNewUrlParser: true,
             useFindAndModify: false
