@@ -65,9 +65,25 @@ router.post('/write',
     ensureAuth, 
     upload.single('photo'),
     [
-        check('title').isLength({max: 10}).notEmpty().withMessage("В названии должно быть не более 10 символов"),
+        check('title').isLength({max: 50}).notEmpty().withMessage("В названии должно быть не более 50 символов"),
         check('description').isLength({max: 120}).notEmpty().withMessage("Описание должно быть не более 120 символов"),
-        check('content').notEmpty().withMessage("Твинк должен содержать историю")
+        check('content').notEmpty().withMessage("Твинк должен содержать историю"),
+        check('photo').custom((val, {req}) => {
+
+            if (req.file != undefined)
+                switch(req.file.mimetype)
+                {
+                    case 'image/png':
+                        return true;
+                    case 'image/jpeg': 
+                        return true;
+                    default: 
+                        throw new Error('Требуется изображение');
+                }
+            else 
+                return true;
+
+        })
     ],
     async (req, res) => 
     {
@@ -75,22 +91,26 @@ router.post('/write',
         if (!errors.isEmpty())
         {
             res.render('write', {
-                title: "Написать твинк",
+                title: "Написать твинс",
                 isWrite: true,
                 errors: errors.array()
             });
             return;
         }
 
-        const story = new Story({
-            image: pathDataUploads + req.file.filename,
+        const objectStory = {
             title: req.body.title,
             content: req.body.content,
             description: req.body.description,
             owner: req.user._id
-        });
+        }
 
+        if (req.file != undefined)
+            objectStory.image = pathDataUploads + req.file.filename
+
+        const story = new Story(objectStory);
         await story.save();
+
         res.redirect('/story/' + story._id);
     }
 );
