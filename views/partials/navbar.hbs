@@ -42,17 +42,17 @@
 </nav>
 
 <div class="container">
-        {{#if errors.length }}
+    {{#if errors.length }}
         {{#each errors}}
-            <div class="card-panel red lighten-1 z-depth-2">
-                <span class="white-text text-darken-2">{{ msg }}</span>
+            <div class="mt-3 alert alert-danger" role="alert">
+                {{ msg }}
             </div>
         {{/each}}
     {{/if}}
 
     {{#if successMessage }}
-        <div class="card-panel green lighten-1 z-depth-2">
-                <span class="white-text text-darken-2">{{ successMessage }}</span>
-            </div>
+        <div class="mt-3 alert alert-success" role="alert">
+            {{ successMessage }}
+        </div>
     {{/if}}
 </div>
