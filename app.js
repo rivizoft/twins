@@ -1,3 +1,4 @@
+const constants = require('./constants.js');
 const express = require('express');
 const mongoose = require('mongoose');
 const exphbs = require('express-handlebars');
@@ -41,7 +42,7 @@ async function start()
 {
     try
     {
-        await mongoose.connect('mongodb://rivizoft:Ibazas13@127.0.0.1:27017/twins?authSource=admin', 
+        await mongoose.connect(constants.mongoUrl, 
         {
             useNewUrlParser: true,
             useFindAndModify: false
