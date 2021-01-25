@@ -21,7 +21,7 @@ router.get('*', (req, res, next) => {
 });
 
 router.get('/', async (req, res) => {
-    const stories = await Story.find().limit(1);
+    const stories = await Story.find().count();
 
     res.render('index', {
         title: "Twins - истории интернета",
